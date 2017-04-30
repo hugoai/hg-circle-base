@@ -17,4 +17,6 @@ jobs:
 
       - type: shell
         name: Upload Docker image
-        command: docker push hugoai/node:latest
+        command: |
+          docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
+          docker push hugoai/node:latest
