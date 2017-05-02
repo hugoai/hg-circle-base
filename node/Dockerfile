@@ -9,6 +9,3 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/so
 RUN sudo apt-get install -y apt-transport-https
 RUN sudo apt-get update -y
 RUN sudo apt-get install -y bash openssh-client python python-setuptools python-dev build-essential jq postgresql-client yarn
-
-# Grab CircleCI scripts for each derived build
-ONBUILD RUN git clone git@github.com:hugoai/hg-circle-scripts.git ~
