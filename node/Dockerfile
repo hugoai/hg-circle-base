@@ -1,5 +1,5 @@
 # Use CircleCI's nodejs base image: https://circleci.com/docs/2.0/circleci-images/#nodejs
-FROM circleci/node:7
+FROM circleci/node:8
 
 # Add package repositories
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
