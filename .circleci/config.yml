@@ -16,7 +16,7 @@ jobs:
                 command: docker build -t hugoai/node:latest ./node
 
             - run:
-              name: Upload Docker image
-              command: |
-                  docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
-                  docker push hugoai/node:latest
+                name: Upload Docker image
+                command: |
+                    docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
+                    docker push hugoai/node:latest
