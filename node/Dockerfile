@@ -10,5 +10,5 @@ RUN echo "deb http://ftp.us.debian.org/debian testing main contrib non-free" | s
 RUN sudo apt-get install -y apt-transport-https
 RUN sudo apt-get update -y
 RUN sudo apt-get install -y bash openssh-client python python-setuptools python-dev build-essential jq postgresql-client yarn git rsync
-RUN sudo easy_install pip
+RUN sudo apt-get install python-pip
 RUN sudo pip install --upgrade awscli
