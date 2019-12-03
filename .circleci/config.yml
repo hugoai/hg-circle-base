@@ -2,21 +2,26 @@ version: 2
 executorType: docker
 
 jobs:
-    build:
-        working_directory: ~/deploy
-        docker:
-            - image: docker:17
-        steps:
-            - checkout
+  build:
+    working_directory: ~/deploy
+    docker:
+      - image: docker:17
+    steps:
+      - checkout
 
-            - type: setup-docker-engine
+      - type: setup-docker-engine
 
-            - run:
-                name: Build Docker image
-                command: docker build -t hugoai/node:latest ./node
+      - run:
+          name: Build Node Docker image
+          command: docker build -t hugoai/node:latest ./node
 
-            - run:
-                name: Upload Docker image
-                command: |
-                    docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
-                    docker push hugoai/node:latest
+      - run:
+          name: Build Flutter Docker image
+          command: docker build -t hugoai/flutter:latest ./flutter
+
+      - run:
+          name: Upload Docker images
+          command: |
+            docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
+            docker push hugoai/node:latest
+            docker push hugoai/flutter:latest
