@@ -10,7 +10,7 @@ RUN echo "deb http://ftp.us.debian.org/debian testing main contrib non-free" | s
 RUN sudo apt-get install -y apt-transport-https
 RUN sudo apt-get update -y
 RUN sudo apt-get install -y bash openssh-client python python-setuptools python-dev build-essential jq postgresql-client yarn git rsync
-RUN sudo apt-get install -y python-pkg-resources
-RUN sudo apt-get remove python-pip-whl
-RUN sudo apt-get install -y python-pip
+RUN sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN sudo python get-pip.py
 RUN sudo pip install --upgrade awscli
+RUN node --version
