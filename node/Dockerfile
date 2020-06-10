@@ -11,5 +11,5 @@ RUN sudo apt-get install -y apt-transport-https
 RUN sudo apt-get update -y
 RUN sudo apt-get install -y bash openssh-client python python-setuptools python-dev build-essential jq postgresql-client yarn git rsync
 RUN sudo apt-get install -y python-pkg-resources
-RUN sudo apt-get install -y python-pip
+RUN sudo easy_install3 pip
 RUN sudo pip install --upgrade awscli
