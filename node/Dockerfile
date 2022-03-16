@@ -9,13 +9,12 @@ RUN echo "deb http://ftp.us.debian.org/debian testing main contrib non-free" | s
 # Install packages
 RUN sudo apt-get install -y apt-transport-https
 RUN sudo apt-get update -y
-RUN sudo apt-get install bash
 RUN sudo apt-get install openssh-client
 RUN sudo apt-get install build-essential
 RUN sudo apt-get install jq
 RUN sudo apt-get install postgresql-client
-RUN sudo apt-get install yarn git rsync
-RUN sudo apt-get install git rsync
+RUN sudo apt-get install yarn
+RUN sudo apt-get install gitba
 RUN sudo apt-get install rsync
 RUN sudo curl -O https://bootstrap.pypa.io/pip/3.4/get-pip.py -o get-pip.py
 RUN sudo python3 get-pip.py
