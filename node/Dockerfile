@@ -8,7 +8,6 @@ RUN echo "deb http://ftp.us.debian.org/debian testing main contrib non-free" | s
 
 # Install packages
 RUN sudo apt-get install -y apt-transport-https
-RUN sudo apt-get update -y
 RUN sudo apt-get install -y openssh-client
 RUN sudo apt-get install -y build-essential
 RUN sudo apt-get install -y jq
