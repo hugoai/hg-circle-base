@@ -16,6 +16,7 @@ RUN sudo apt-get install postgresql-client
 RUN sudo apt-get install yarn
 RUN sudo apt-get install gitba
 RUN sudo apt-get install rsync
+RUN sudo apt-get install bash
 RUN sudo curl -O https://bootstrap.pypa.io/pip/3.4/get-pip.py -o get-pip.py
 RUN sudo python3 get-pip.py
 RUN sudo pip install --upgrade pip awscli
