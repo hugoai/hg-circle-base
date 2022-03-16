@@ -16,6 +16,7 @@ RUN sudo apt-get install -y git
 RUN sudo apt-get install -y rsync
 RUN sudo apt-get install -y yarn
 RUN sudo apt-get install -y bash
+RUN sudo apt-get update -y
 RUN sudo curl -O https://bootstrap.pypa.io/pip/3.4/get-pip.py -o get-pip.py
 RUN sudo python3 get-pip.py
 RUN sudo pip install --upgrade pip awscli
