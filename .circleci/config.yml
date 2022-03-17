@@ -21,6 +21,10 @@ jobs:
 
       - run:
           name: Upload Docker images
+          filters:
+            branches:
+              only:
+                - master
           command: |
             docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
             docker push hugoai/node:latest
