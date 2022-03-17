@@ -19,13 +19,12 @@ jobs:
           name: Build Flutter Docker image
           command: docker build -t hugoai/flutter:latest ./flutter
 
-      - run:
-          name: Upload Docker images
-          filters:
-            branches:
-              only:
-                - master
-          command: |
-            docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
-            docker push hugoai/node:latest
-            docker push hugoai/flutter:latest
+      - when:
+          condition: $CIRCLE_BRANCH = "master"
+          steps:
+            - run:
+                name: Upload Docker images
+                command: |
+                  docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
+                  docker push hugoai/node:latest
+                  docker push hugoai/flutter:latest
