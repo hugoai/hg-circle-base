@@ -20,15 +20,13 @@ jobs:
       - when:
           condition:
             and:
-              - equal: [ master, << pipeline.git.branch >> ]
+              - equal: [ tcosta/fix/fix-pipeline, << pipeline.git.branch >> ]
 
           steps:
             - run:
                 name: "Upload docker images"
-                command: |
-                  docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
-                  docker push hugoai/node:latest
-                  docker push hugoai/flutter:latest
+                command: echo "Upload docker images"
+
 
 workflows:
   build_and_upload:
