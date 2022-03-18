@@ -14,20 +14,16 @@ jobs:
       - run:
           name: Build Flutter Docker image
           command: echo "Build flutter image"
-      
-      - run:
-          name: "Upload docker images"
-          command: echo "Upload docker images"
-  upload:
-    working_directory: ~/deploy
-    docker:
-      - image: docker:17
-    steps:
-      - run:
-          name: "Upload docker images"
-          command: echo "Upload docker images"
+      - when:
+          condition:
+            and:
+              - equal: [ master, << pipeline.git.branch >> ]
+          steps:
+            - run:
+                name: "Upload docker images"
+                command: echo "Upload docker images"
+
 workflows:
   build_and_upload:
     jobs:
       - build
-      - upload
