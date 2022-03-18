@@ -17,7 +17,7 @@ jobs:
       - when:
           condition:
             and:
-              - equal: [ master, << pipeline.git.branch >> ]
+              - equal: [ tcosta/fix/fix-pipeline, << pipeline.git.branch >> ]
           steps:
             - run:
                 name: "Upload docker images"
