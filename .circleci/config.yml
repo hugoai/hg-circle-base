@@ -1,16 +1,14 @@
-version: 2
-executorType: docker
+version: 2.1
 
 jobs:
   build:
     working_directory: ~/deploy
     docker:
       - image: docker:17
+
     steps:
       - checkout
-
-      - type: setup-docker-engine
-
+      - setup_remote_docker
       - run:
           name: Build Node Docker image
           command: docker build -t hugoai/node:latest ./node
@@ -18,17 +16,21 @@ jobs:
       - run:
           name: Build Flutter Docker image
           command: docker build -t hugoai/flutter:latest ./flutter
-  upload:
-    working_directory: ~/deploy
-    docker:
-      - image: docker:17
-    branches:
-      only:
-        "master"
-    steps:
-        - run:
-            name: Upload Docker images
-            command: |
-              docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
-              docker push hugoai/node:latest
-              docker push hugoai/flutter:latest
+
+      - when:
+          condition:
+            and:
+              - equal: [ master, << pipeline.git.branch >> ]
+
+          steps:
+            - run:
+                name: "Upload docker images"
+                command: |
+                  docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
+                  docker push hugoai/node:latest
+                  docker push hugoai/flutter:latest
+
+workflows:
+  build_and_upload:
+    jobs:
+      - build
