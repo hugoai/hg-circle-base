@@ -19,8 +19,8 @@ jobs:
   upload_docker_images:
     steps:
       - run:
-        name: "Upload docker images"
-        command: echo "Upload docker images"
+          name: "Upload docker images"
+          command: echo "Upload docker images"
 workflows:
   version: 2
   build_and_upload:
