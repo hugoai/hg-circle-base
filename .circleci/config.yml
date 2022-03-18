@@ -9,15 +9,16 @@ jobs:
   build_node_image:
     steps:
       - run:
-        name: Build Node Docker image
-        command: echo "Build docker image"
+          name: Build Node Docker image
+          command: echo "Build docker image"
   build_flutter_image:
     steps:
       - run:
-        name: Build Flutter Docker image
-        command: echo "Build flutter image"   
+          name: Build Flutter Docker image
+          command: echo "Build flutter image"   
   upload_docker_images:
     steps:
+      - run:
         name: "Upload docker images"
         command: echo "Upload docker images"
 workflows:
