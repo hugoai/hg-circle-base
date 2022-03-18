@@ -1,27 +1,30 @@
-version: 2
-executorType: docker
-
 jobs:
   build:
-    working_directory: ~/deploy
     docker:
       - image: docker:17
     steps:
       - checkout
-
       - type: setup-docker-engine
 
+  build_node_image:
+    steps:
       - run:
-          name: Build Node Docker image
-          command: echo "Build docker image"
-
+        name: Build Node Docker image
+        command: echo "Build docker image"
+  build_flutter_image:
+    steps:
       - run:
-          name: Build Flutter Docker image
-          command: echo "Build flutter image"
-
-      - run:
-          branches:
-            only:
-              - master
-          name: "Upload docker images"
-          command: echo "Upload docker images"
+        name: Build Flutter Docker image
+        command: echo "Build flutter image"   
+  upload_docker_images:
+    steps:
+        name: "Upload docker images"
+        command: echo "Upload docker images"
+workflows:
+  version: 2
+  build_and_upload:
+    jobs:
+      - build
+      - build_node_image
+      - build_flutter_image
+      - upload_docker_images
