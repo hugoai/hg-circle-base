@@ -20,13 +20,15 @@ jobs:
       - when:
           condition:
             and:
-              - equal: [ tcosta/fix/pipeline-conditional-refactor, << pipeline.git.branch >> ]
+              - equal: [ master, << pipeline.git.branch >> ]
 
           steps:
             - run:
                 name: "Upload docker images"
-                command: echo "Upload docker images"
-
+                command: |
+                  docker login -u engineeringhugoai -p $DOCKER_HUB_PASSWORD
+                  docker push hugoai/node:latest
+                  docker push hugoai/flutter:latest
 
 workflows:
   build_and_upload:
