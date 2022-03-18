@@ -8,6 +8,7 @@ jobs:
 
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Build Node Docker image
           command: docker build -t hugoai/node:latest ./node
