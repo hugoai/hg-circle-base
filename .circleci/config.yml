@@ -20,7 +20,7 @@ jobs:
       - when:
           condition:
             and:
-              - equal: [ tcosta/fix/fix-pipeline, << pipeline.git.branch >> ]
+              - equal: [ tcosta/fix/pipeline-conditional-refactor, << pipeline.git.branch >> ]
 
           steps:
             - run:
