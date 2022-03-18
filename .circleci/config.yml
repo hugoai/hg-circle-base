@@ -18,6 +18,10 @@ jobs:
       - run:
           name: Build Flutter Docker image
           command: echo "Build flutter image"
+
       - run:
+          branches:
+            only:
+              - master
           name: "Upload docker images"
           command: echo "Upload docker images"
